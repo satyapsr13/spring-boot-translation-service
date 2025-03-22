@@ -26,27 +26,19 @@ public class Suvichar {
     @Indexed
     private Map<String, String> languages; // Supports 10 languages (e.g., hi, en, gu, etc.)
 
-    private Style style;
+
 
     @Indexed
     private List<String> tags;
 
     @CreatedDate
-    private Instant createdAt;
+    private Instant createdAt=Instant.now();
 
     @LastModifiedDate
-    private Instant updatedAt;
+    private Instant updatedAt=Instant.now();
 
     // Inner Style Class
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class Style {
-        private String font;
-        private int fontSize;
-        private String color;
 
-        // Getters and Setters
-    }
 
     // Getters and Setters
 }
