@@ -12,33 +12,32 @@ import java.time.Instant;
 import java.util.List;
 import java.util.Map;
 
+@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
+
 @Document(collection = "suvichars")
 public class Suvichar {
 
     @Id
-    private String id;
+    private String id; // ID for the Suvichar entity
 
-    @Indexed
-    private Map<String, String> languages; // Supports 10 languages (e.g., hi, en, gu, etc.)
+    private String quote; // Main quote text
+    private String category; // e.g., motivational, spiritual, etc.
+    private boolean goodMorningWish=false; // Boolean flag for "Good Morning" wishes
 
+    private List<String> tags; // List of tags (e.g., ["motivational", "ram"])
 
+    private List<Translation> translations; // List of translations
 
-    @Indexed
-    private List<String> tags;
-
-    @CreatedDate
-    private Instant createdAt=Instant.now();
-
-    @LastModifiedDate
-    private Instant updatedAt=Instant.now();
-
-    // Inner Style Class
-
-
-    // Getters and Setters
+    @Data
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class Translation {
+        private String language;  // Language name (e.g., English, Hindi)
+        private String langCode;  // Language code (e.g., "en", "hi", "gu")
+        private String quote;     // Translated quote text
+    }
 }
